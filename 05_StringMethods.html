@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let a = ' Merhaba Dünya; Merhaba Gezegen ';
+        let trimedA = a.trim(); //'Merhaba Dünya; Merhaba GEzegen'
+        let splitString = a.split(';'); //['Merhaaa Dünya','Merhaba Gezegen']
+        let upperCasedValue = a.toUpperCase();
+        let lowerCasedVAlue = a.toLowerCase();
+        let replaceValue = a.replace(';', '#');
+        let substringValue = a.substring(2, 3); //2.indextn itibaren 3 tane al 
+        let concatString = "Ali".concat(" Tan "); // Ali Tan string birleştirme yapıldı
+        let startsWith = "cenk".startsWith('c'); //true / false döner
+        let endsWith = "cenk".endsWith('k');// true/false döner
+        let contains = 'Merhaba JS'.includes("a"); //içerisinde "a" geçiyor mu(JS de include vardır contains yerine)
+        let bold = "ali".bold(); //<b>ali</b> koyu bir font olur 
+        let deneme1 = "deneme1".fontsize(32); // 32 puntoluk bir yazı haline getirir
+
+        //Regex düzenli ifadeler genelde string bir metinin içerisinde karakter arama ya da bir aram aiçin kullanırız
+
+        /\d/.test("1324532"); //bunujn sonucu true ya da false döner => true metinsel bir ifadenin /\d/ e uygun olup olmadığını kontrol eder.uyarsa true uymazsa false döner
+        //a ile z arasonda bir değer dömnüp dönmediğine bakar geçerse değer gösterir geçmzese boş döner
+        let isMatch = "1234565".match(/[a-z]/);
+
+    </script>
+</body>
+
+</html>

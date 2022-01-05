@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        const person = { name: 'ali', surname: 'tan' }
+        //forin kullanarak bir objenin içerisinde propertylerrde gezinti yapabiliriz .C#daki karşılığı reflectipn diye bir konuya girer
+        for (const prop in person) {
+            //Object.hasOwnProoert.call ile bu person objesi içiersibde 'person' içersisideki her bir propery kontrol eder
+            if (Object.hasOwnProperty.call(person, prop)) {
+                //person.name
+                //person.surname
+                const propValue = person[prop];
+
+            }
+        }
+        //Note eğer obje dizisi ile çalışıyrorsak foreach ya da forof kullanırız
+        let persons = [
+            { name: 'mert', surname: 'corukoglu' },
+            { name: 'furkan', surname: 'biçer' },
+            { name: 'eren', surname: 'baba' },
+            { name: 'aleyna', surname: 'yeşil' },
+            { name: 'mustafa', surname: 'akdağ' },
+
+        ];
+        //forof kullanımı
+        for (const person of persons) {
+            console.log('person', person);
+        }
+        //foreach kullanımı
+        persons.forEach(person => {
+            console.log('person2', person);
+        });
+
+        //nmber dizisi,string isim listesi ivs ya da başlangıç bitşi belli olan bir işlem için for tercih edililr
+
+        let counter = 0;
+        for (let index = 0; index < 10; index++) {
+            counter++;
+        }
+
+        //dizi işlemleri 
+
+        //diziye eleman ekleme
+        //spread operatoru ile dşziye elemane ekleme
+        //spread operatoru sonrası , den sonra bir obje eklediğimizden dolayı son eleman olarak diziye ekleme yap
+        persons = [...persons, { name: 'özge', surname: 'ergezer' }]; //3 nokta spread operatoru anlamına gelir
+        //diziye ilk eleman olarak ekleme yapmak iöin 
+        persons = [{ name: 'furkan', surname: 'eroğlu' }, ...persons];
+
+        console.log('persons-after-add', persons);
+
+
+        //diziye elemanı push ile ekleme
+        persons.push({ name: 'taner', surname: 'sayın' }); //dizinin son elemanına ekler
+        //dizinin ilk elemanına eklemek istiyor isem
+        persons.unshift({ name: 'ramazan', surname: 'güneş' })
+
+
+        //obje dizisinden eleman çıkarma işlemi
+        persons = persons.filter(x => x.name != 'ramazan'); //ramazan olmayanları filtrele yani onları tutuyor
+
+        console.log('filtetred-persons', persons);
+
+        //çıkarma işlemi 2.yöntem
+        persons.splice(2, 1)//2.indexteki arkadaşımızı sil demek.ikinci parametre 2.indextren sonra kaç kayıt silineceğiini belirtmek için kullanırız
+        console.log('splice-persons', persons);
+
+        //find ile dpeer bulma
+        let personn = persons.find(x => x.name == 'mert');
+
+        if (personn != undefined) {
+            personn.name = 'MERT';
+        };
+        //find index ile değer bulma(number dönüyor findindex)
+        let personIndex = persons.findIndex(x => x.name == 'taner');
+        persons[personIndex].name = 'TANER';
+        console.log('person-after-update', persons);
+
+
+        //map kullanımı (C#daki select metodu gibi ismi çıkarır sadece karşımıza aşağıdaki yazdığımız kod isme göre filtereleme yapıyor ve tüm isimler uppercase.)
+        let personsSelectByName = persons.map(item => {
+            return {
+                name: item.name.toUpperCase()
+            }
+        });
+        console.log('personSelectByName', personsSelectByName);
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        const numbers = [10, 9, 3, 17, 23, 89];
+        //eğer basit bir dizi içersiindeki değerleri sıralayacak isek aşağıdaki sort metotdunu kulllanabiliriz
+        const sortedNumbers = numbers.sort(function (a, b) { return a - b }); //ascending sıralama
+
+        console.log('sortedAsc', numbers);
+        const reversedNumbers = sortedNumbers.reverse();
+        console.log('sortedDesc', numbers);
+
+        //string dizilerde yukarıdaki number dizilerdeki gibi işlem yapmamzıa gerek kalmadan asc olarak sıralar
+        const names = ['ali', 'ayşe', 'can', 'taner', 'betül'];
+        const sortedNames = names.sort();
+        console.log('sortedNames', sortedNames);
+
+        //bu tarz dizilerde sıralama öncekilerdeki gibi olmuyor farklı şekilde oluyor
+        const employees = [{ name: 'mustafa', surname: 'can', age: 23 }, { name: 'ayşe', surname: 'güzel', age: 22 }, { name: 'kerem', surname: 'lale', age: 26 }]
+
+        //1-işşlem eğer string alanma göre sıralama yapacaksak >< ifadeleri gibi 1,0,-1 gibi değerler döndürmeliyiz
+        //2-işlem; eğer rakamsal bir değere göre sırlama yapacaak isek yukarıdaki gibi bir a-b algoritmasına göre sırlama yapabilir
+
+        const sortedByNames = employees.sort(function (a, b) {
+            return a.name.localeCompare(b.name);
+        });
+
+
+        const sortedBySurnames = employees.sort(function (a, b) {
+            return a.surname.localeCompare(b.surname);
+        });
+        const sortedByAge = employees.sort(function (a, b) {
+            return a.age - b.age;
+        });
+        console.log('sortedbyNames', sortedByNames);
+
+        console.log('sortedbySurnames', sortedBySurnames);
+
+        console.log('sortedByAge', sortedByAge);
+
+        Array.prototype.OrderBy = function (propName, orderType) {
+            //hangi propuna göre sıralama yapacağım,orderType=asc veya desc değeri
+            //this bu nesnenin kendi isntanceıdır
+
+            if (orderType != 'asc' && orderType != 'desc') {
+                throw new Error('sıralama tipi için asc veya desc değeri giriniz')
+            }
+            const propertyValue = this[0][propName];
+            console.log('propertyValue', propertyValue);
+            //bu gönderilen değer number mı string mi ?
+            if (propertyValue != undefined) {
+                if (typeof (propertyValue) === 'string') {
+                    //localeCompate
+                    this.sort(function (a, b) {
+                        if (orderType === 'asc') {
+                            return a[propName].localeCompare(b[propName]);
+                        }
+                        else {
+                            b[propName].localeCompare(a[propName]);
+                        }
+
+                    })
+                }
+                else if (typeof (propertyValue) == 'number') {
+                    if (orderType == 'asc') {
+                        return a[propName].localeCompare(b[propName]);
+                    }
+                    else if (orderType == 'desc') {
+                        return b[propName].localeCompare(a[propName]);
+
+                    }
+                }
+
+            }
+            else {
+                throw new Error(`${propName} adında bir property bulunamadı!`)
+            }
+
+        }
+        employees.OrderBy('surname', 'asc')
+        console.log('employees2', employees);
+
+        // const array1 = [34, 56, 67];
+        // const array2 = [1, 32, 67, 89];
+        // let array3 = [];
+        // const array3 = array3.concat(array1, array2);
+        // console.log('array3', array3);
+
+    </script>
+</body>
+
+</html>

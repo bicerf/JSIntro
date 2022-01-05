@@ -10,7 +10,93 @@
 
 <body>
     <script>
-        alert('safd');
+        //VAriables
+        //number,string,boolean,object
+
+        //var,const,let
+        //global scope değişkenler için var kullanırız
+        //block scope değişkenler için ise const ya da let kullanırız
+        //değişken değeri alt kod satırlarında değişmeyecek ise const değişkenlik gösterecek ise let kullanılır
+
+        var counter = 0;//gloval scope variable
+
+        function Deneme() {
+            const isExist = true // function scope
+            if (isExist) {
+                //block scope
+                //değişebilir
+                let number = counter + 1;
+            }
+        }
+
+        const a = 10;
+        const b = 10.5;
+        const c = "deneme";
+        const d = true;
+        let e;  //js herthangi bir değişkkene değer verilmediği takdirde "undefined" döner
+        const f = null; //null olaan değişkenler object tipinde tanımlanır
+        const g = 10 / 0;
+        const k = "A";
+        const l = 10 / 'a' //NaN (not a number) hata dönmez nan döner
+        //JSde '' ile "" aynı şey string ifadeler JS developerlar genelde '' işaretleme eğilimindedir
+        const names = ["Ali", '']  //dizilerin tipi objedir
+        const nameObj = { name: 'ali', surname: 'can', age: 21 } //literal object format
+        const r = function () { //funtion tip döner
+
+        };
+
+
+        //typeof değişkeni ile bir variaableın tipini öğreniriz
+        console.log('a', typeof (a));
+        console.log('b', typeof (b));
+        console.log('c', typeof (c));
+        console.log('d', typeof (d));
+        console.log('e', typeof (e));
+        console.log('f', typeof (f));
+        console.log('g', typeof (g));
+        console.log('k', typeof (k));
+        console.log('g-result', g); //infinity döner sonsuz sonuca bakıyor çünkü tipe değil
+        console.log('l-result', l); //NaN döner hata dönmez
+        console.log('namesArray', typeof (names));
+
+
+
+        delete nameObj.age; //bu kod ile çalışma zamanında objenin propunu silebiliriz
+        nameObj['color'] = 'yellow'; // var olmayan bir property i bir objeye ekleyip yer ataması yap
+        nameObj.color = 1; //nesnenin propertysini string tipten number tipe çevirdik çünkü bir tip tanımlası sınırı yok
+        console.log('nameObj-result', nameObj);
+
+
+
+        console.log('r', typeof (r)); //function tipi döner
+        r(); // function çalıştırmak için JS Call işlemi ();
+
+        //JS Funtions davranış şekline göre değer döndüren ve değer döndürmeyen funtions olarak 2 e ayrılır
+
+        function sum(num1, num2) {
+            return Number(num1) + Number(+num2);
+        }
+        //num1,num2 function parameters ama tipi yok
+        //toplama işleminin sayısal bir anlam ifade edebilmesi için her iki parametre number ile işaretlenip sayısal değere çevrildi
+        //funtion dönüş tipi yok
+        //değer döndüren bir function ise return ile işaretleniyor
+
+        //tek satır Arrow Fucntion
+        const sumArrow = (num1, num2) =>
+            Number(num1) + Number(num2);
+
+        //yuakrıdakinin bir tık uzunu
+        const sumArrow2 = (num1, num2) => {
+            return Number(num1) + Number(num2);
+        }
+        //default format function tanımlamaıs
+        function showMessage(message) {
+            alert(message);
+        }
+        //JS developerlar function isimlerini camelCase yazma eğilimindedirler
+        //Yukarıdaki method değer döndürmeyen bir func örneğidir
+
+
     </script>
 </body>
 

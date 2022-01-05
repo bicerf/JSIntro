@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        const d = new Date(); // jsde şuanın tarihini getirir
+        const d2 = new Date('10-10-2021');
+        const d3 = new Date(2021, 10, 23, 10, 30, 30);//year,month,date,hour,minute şeklinde yazabiliriz
+
+        console.log('d', d);
+        console.log('d2', d2);
+        console.log('d3', d3);
+        console.log('d2-type', typeof (d2)); //object tipi tanımlı date
+
+        const today = new Date();
+        const hour = today.getHours();
+        const minute = today.getMinutes();
+        const day = today.getDate(); // ayın gününü getirir 1-31 arası değer döner
+        const weekDay = today.getDay(); //Haftanın günün getirir 0-6 arası değer döner
+        const month = today.getMonth(); //Tarihin ay değerini getirir 0-11 arası!!!(1 ile başlamaz index mantığı ile döner)
+
+        //haftanın günlerinde d e aynı durum söz konusu 0 pazar kabul edilir 6 ise cumartesi
+
+
+        console.log('today', today);
+        console.log('hour', hour);
+        console.log('minute', minute);
+        console.log('day', day);
+        console.log('weekDay', weekDay);
+        console.log('month', month);
+
+        today.setFullYear(2023);
+        console.log('yeniTarih', today);
+        //yukarıdaki metodların da setleri var..
+
+        //Değişkebndeki ntipi.prototype ile nesnenin JS deki default haline bağlanarak genişletebiliypruz.biz buna extension function diyoruz.
+
+        Date.prototype.addHours = function (h) {
+            this.setHours(this.getHours() + h);
+            return this;
+        }
+        console.log('after-addHoursMethod', today.addHours(3));
+        Date.prototype.addYears = function (y) {
+            this.setFullYear(this.getFullYear() + y);
+            return this;
+        }
+        console.log('after-addHoursMethod', today.addYears(3));
+
+        Date.prototype.getFormatedDate = function (format = 'dd/MM/yyyy') {
+            if (format == 'dd/MM/yyyy') {
+                return `${this.getDate()} /${this.getMonth() + 1} /${this.getFullYear()}` //jsde stringle js functipnları bir arada yazmak için `` backtick işareti kullanılır
+            }
+            else if (format == 'MM//dd/yyyy') {
+                return `${this.getMonth() + 1} /${this.getDate()} /${this.getFullYear()}`
+            }
+        }
+        console.log('after-getFormatedDateMethod', today.getFormatedDate('dd/MM/yyyy'));
+
+    </script>
+</body>
+
+</html>
