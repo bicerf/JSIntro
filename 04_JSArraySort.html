@@ -13,11 +13,11 @@
 
         const numbers = [10, 9, 3, 17, 23, 89];
         //eğer basit bir dizi içersiindeki değerleri sıralayacak isek aşağıdaki sort metotdunu kulllanabiliriz
-        const sortedNumbers = numbers.sort(function (a, b) { return a - b }); //ascending sıralama
+        const sortedNumbers = numbers.sort(function (a, b) { return a-b }); //ascending sıralama
 
-        console.log('sortedAsc', numbers);
+        console.log('sortedAsc', sortedNumbers);
         const reversedNumbers = sortedNumbers.reverse();
-        console.log('sortedDesc', numbers);
+        console.log('sortedDesc', reversedNumbers);
 
         //string dizilerde yukarıdaki number dizilerdeki gibi işlem yapmamzıa gerek kalmadan asc olarak sıralar
         const names = ['ali', 'ayşe', 'can', 'taner', 'betül'];
@@ -59,7 +59,7 @@
             //bu gönderilen değer number mı string mi ?
             if (propertyValue != undefined) {
                 if (typeof (propertyValue) === 'string') {
-                    //localeCompate
+                    //localeCompare
                     this.sort(function (a, b) {
                         if (orderType === 'asc') {
                             return a[propName].localeCompare(b[propName]);

@@ -39,6 +39,7 @@
 
         today.setFullYear(2023);
         console.log('yeniTarih', today);
+        
         //yukarıdaki metodların da setleri var..
 
         //Değişkebndeki ntipi.prototype ile nesnenin JS deki default haline bağlanarak genişletebiliypruz.biz buna extension function diyoruz.
@@ -52,7 +53,7 @@
             this.setFullYear(this.getFullYear() + y);
             return this;
         }
-        console.log('after-addHoursMethod', today.addYears(3));
+        console.log('after-addYearsMethod', today.addYears(3));
 
         Date.prototype.getFormatedDate = function (format = 'dd/MM/yyyy') {
             if (format == 'dd/MM/yyyy') {

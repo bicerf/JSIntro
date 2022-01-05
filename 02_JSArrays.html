@@ -13,11 +13,13 @@
 
         const person = { name: 'ali', surname: 'tan' }
         //forin kullanarak bir objenin içerisinde propertylerrde gezinti yapabiliriz .C#daki karşılığı reflectipn diye bir konuya girer
+        //forin
         for (const prop in person) {
             //Object.hasOwnProoert.call ile bu person objesi içiersibde 'person' içersisideki her bir propery kontrol eder
             if (Object.hasOwnProperty.call(person, prop)) {
                 //person.name
                 //person.surname
+            
                 const propValue = person[prop];
 
             }
@@ -31,7 +33,9 @@
             { name: 'mustafa', surname: 'akdağ' },
 
         ];
+        
         //forof kullanımı
+
         for (const person of persons) {
             console.log('person', person);
         }
@@ -41,10 +45,13 @@
         });
 
         //nmber dizisi,string isim listesi ivs ya da başlangıç bitşi belli olan bir işlem için for tercih edililr
+        for (let index = 0; index < persons.length; index++) {
+            console.log('deneme',persons[index]);
+        }
 
         let counter = 0;
-        for (let index = 0; index < 10; index++) {
-            counter++;
+        for (let index = 0; index <10 ; index++) {
+            console.log(counter++);
         }
 
         //dizi işlemleri 
@@ -74,7 +81,7 @@
         persons.splice(2, 1)//2.indexteki arkadaşımızı sil demek.ikinci parametre 2.indextren sonra kaç kayıt silineceğiini belirtmek için kullanırız
         console.log('splice-persons', persons);
 
-        //find ile dpeer bulma
+        //find ile değer bulma
         let personn = persons.find(x => x.name == 'mert');
 
         if (personn != undefined) {
@@ -89,7 +96,8 @@
         //map kullanımı (C#daki select metodu gibi ismi çıkarır sadece karşımıza aşağıdaki yazdığımız kod isme göre filtereleme yapıyor ve tüm isimler uppercase.)
         let personsSelectByName = persons.map(item => {
             return {
-                name: item.name.toUpperCase()
+                name: item.name.toUpperCase(),
+                surname:item.surname.toLowerCase()
             }
         });
         console.log('personSelectByName', personsSelectByName);
